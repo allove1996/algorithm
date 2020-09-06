@@ -71,6 +71,10 @@ public class Sort {
     }
 
     /*归并排序*/
+    static void mergeSort(int[] arr) {
+        mergeSort(arr, 0, arr.length - 1);
+    }
+
     public static void mergeSort(int[] array, int left, int right) {
         if (right <= left) return;
         int mid = (left + right) >> 1;
@@ -91,13 +95,6 @@ public class Sort {
             array[left + p] = temp[p];
         }
     }
-
-
-    /*归并排序*/
-    static void mergeSort(int[] arr) {
-        mergeSort(arr, 0, arr.length - 1);
-    }
-
 
     /*快速排序*/
     public static void quickSort(int[] array, int begin, int end) {
