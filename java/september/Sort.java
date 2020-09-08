@@ -1,5 +1,6 @@
 package september;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -119,6 +120,14 @@ public class Sort {
         array[pivot] = array[counter];
         array[counter] = temp;
         return counter;
+    }
+
+    public static void main(String[] args) {
+        int[] array = new int[] {8, 2, 4,3,0, 9 ,4, 7};
+        quickSort(array, 0, array.length - 1);
+        for(int num : array) {
+            System.out.println(num);
+        }
     }
 
     /*堆排序*/
