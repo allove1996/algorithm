@@ -1,0 +1,10 @@
+# Default ignored files
+/workspace.xml
+/target
+*.class
+*.zip
+*.xml
+*.iml
+*.json
+.idea
+.vscode
