@@ -9,13 +9,12 @@ public class LargestRectangleArea {
         if (heights == null) {
             return 0;
         }
-        if (heights.length == 1) {
+        if (heights.length == 1){
             return heights[0];
         }
-        int len = heights.length;
         int area = 0;
         Deque<Integer> stack = new ArrayDeque<>();
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < heights.length; i++) {
             while (!stack.isEmpty() && heights[stack.peek()] > heights[i]) {
                 int height = heights[stack.poll()];
                 while (!stack.isEmpty() && heights[stack.peek()] == height) {
@@ -31,28 +30,16 @@ public class LargestRectangleArea {
             }
             stack.push(i);
         }
-
-        while (!stack.isEmpty()) {
-            int height = heights[stack.peek()];
-            while (!stack.isEmpty() && heights[stack.peek()] == height) {
-                stack.poll();
-            }
-            int width;
+        while(!stack.isEmpty()) {
+            int height = heights[stack.poll()];
+            int width = 0;
             if (stack.isEmpty()) {
-                width = len;
+                width = heights.length;
             } else {
-                width = len - stack.peek() - 1;
+                width = heights.length - stack.peek() - 1;
             }
-
             area = Math.max(area, width * height);
         }
-
         return area;
-    }
-
-    public static void main(String[] args) {
-        int[] height = new int[]{2,1,5,6,2,3};
-        int largestArea = new LargestRectangleArea().largestRectangleArea(height);
-        System.out.println(largestArea);
     }
 }

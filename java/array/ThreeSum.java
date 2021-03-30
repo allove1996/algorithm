@@ -1,4 +1,4 @@
-package arrayAndLinkedList;
+package array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,35 @@ import java.util.List;
 
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            return null;
+        }
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        for (int k = 0; k < nums.length; k++) {
+            if (nums[k] > 0) {
+                break;
+            }
+            if (k > 0 && nums[k] == nums[k - 1]) {
+                continue;
+            }
+            for (int i = k + 1, j = nums.length - 1; i < j;) {
+                if (nums[i] + nums[j] + nums[k] == 0) {
+                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    while (i < j && nums[i] == nums[++i]);
+                    while (i < j && nums[j] == nums[--j]);
+                }else if (nums[i] + nums[j] + nums[k] < 0) {
+                    while (i < j && nums[i] == nums[++i]);
+                }else if (nums[i] + nums[j] + nums[k] > 0) {
+                    while (i < j && nums[j] == nums[--j]);
+                }
+            }
+        }
+        return result;
+    }
+
+
+    /*public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         for (int i  = 0; i < nums.length - 2; i++) {
@@ -31,5 +60,5 @@ public class ThreeSum {
             }
         }
         return result;
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package arrayAndLinkedList;
+package array;
 
 public class MaxArea {
     public int maxArea(int[] height) {
