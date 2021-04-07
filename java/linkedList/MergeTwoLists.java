@@ -2,7 +2,7 @@ package linkedList;
 
 public class MergeTwoLists {
 
-    public class ListNode {
+    private class ListNode {
         int val;
         ListNode next;
 
